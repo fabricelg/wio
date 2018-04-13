@@ -1,0 +1,39 @@
+
+<div class='map-popup'>
+  <div class="list card" style="margin: 5px;">
+
+	<!--div class="item item-avatar"-->
+    <div class="item" style="padding: 5px">
+        <h2 style="font-size: 12px">{{parameter.etat}}</h2>
+    </div>
+	<div class="item" style="height:115px; padding: 1px; overflow-y:scroll">
+		<div class="item" style="padding: 5px">
+			<img src="{{parameter.photo}}" ng-if="parameter.photo">
+			<h2 style="font-size: 12px">{{parameter.place.name}}</h2>
+			<p style="font-size: 11px">{{parameter.place.formatted_address}}</p>
+			<p style="font-size: 10px">latitude : {{parameter.latitude}}</p>
+			<p style="font-size: 10px">longitude : {{parameter.longitude}}</p>
+			<p style="font-size: 11px">{{parameter.place.formatted_phone_number}}</p>
+			<p style="font-size: 11px">{{parameter.place.siteweb}}</p>
+		</div>
+		<div class="item" style="padding: 5px" ng-if="parameter.place.opening_hours">
+			<h2 style="font-size: 12px">Horaires :</h2>
+			<div ng-repeat="weekday_text in parameter.place.opening_hours.weekday_text">
+				<p style="font-size: 11px">{{weekday_text}}</p>
+			</div>
+		</div>
+		<!--
+		<div class="item">
+		  <p>
+			<a href="#" class="subdued">1 Like</a>
+			<a href="#" class="subdued">5 Comments</a>
+		  </p>
+		  <p><a href="#" class="subdued">(idée pour plus tard)</a></p>
+		</div>
+		-->
+		<div class="item" style="padding: 5px">
+			<p style="font-size: 12px"><a target='blank' href='https://maps.googleapis.com/maps/api/place/details/json?placeid={{parameter.place_id}}&key=AIzaSyA7MruqhvAfofoA6ozwOMaBPRM4uyVQIQg'>D&eacute;tail JSON</a></p>
+		</div>
+	</div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<ion-view title="Login" hide-nav-bar="true" cache-view="false" nav-transition="none" id="page11">
+  <ion-content padding="true" style="background: url(img/EMgagYJGQEqKrGDGvrvy_login.jpg) no-repeat center;background-size:cover;" class="manual-ios-statusbar-padding" scroll="false">
+    <form id="login-form7" class="list center-form">
+      <div id="login-markdown3" ng-show="error!=''" class="show-list-numbers-and-dots error-box">
+        <p style="color:#FFFFFF;">{{error}}</p>
+      </div>
+      <div class="spacer" style="height: 100px;"></div>
+      <label class="item item-input top-input" id="login-input15">
+        <span class="input-label">Email</span>
+        <input type="email" placeholder="" ng-model="data.email">
+      </label>
+      <label class="item item-input botoom-input" id="login-input16">
+        <span class="input-label">Password</span>
+        <input type="password" placeholder="" ng-model="data.password">
+      </label>
+      <div class="spacer" style="height: 40px;"></div>
+      <button id="login-button12" ng-click="login()" ng-show="true==false" class="button button-calm button-block">Log in</button>
+      <button id="login-button29" ng-click="loginFirebase()" class="button button-calm button-block">Log in Firebase</button>
+      <a ui-sref="signup()" id="login-button13" class="button button-calm button-block button-clear">Or create an account</a>
+      <a ui-sref="reset()" id="login-button32" class="button button-assertive button-block button-clear">Resest password ?</a>
+    </form>
+  </ion-content>
+</ion-view>

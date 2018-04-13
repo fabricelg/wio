@@ -1,0 +1,18 @@
+<ion-view title="Reset" hide-nav-bar="true" id="page14">
+  <ion-content padding="true" style="background: url(img/EMgagYJGQEqKrGDGvrvy_login.jpg) no-repeat center;background-size:cover;" class="manual-ios-statusbar-padding" scroll="false">
+    <form id="reset-form9" class="list center-form">
+      <div id="reset-markdown5" ng-show="error" class="show-list-numbers-and-dots error-box">
+        <p style="color:#FFFFFF;">{{error}}</p>
+      </div>
+      <div class="spacer" style="height: 100px;"></div>
+      <label class="item item-input top-input" id="reset-input31">
+        <span class="input-label">Email</span>
+        <input type="email" placeholder="" ng-model="data.email">
+      </label>
+      <div class="spacer" style="height: 40px;"></div>
+      <button id="reset-button33" ng-click="login()" ng-show="true==false" class="button button-calm button-block">Reset</button>
+      <button id="reset-button34" ng-click="resetPasswordFirebase()" class="button button-calm button-block">Reset password Firebase</button>
+      <a ui-sref="login()" id="reset-button35" class="button button-calm button-block button-clear">Remember password ?</a>
+    </form>
+  </ion-content>
+</ion-view>

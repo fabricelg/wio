@@ -1,0 +1,28 @@
+<ion-view title="Signup" hide-nav-bar="true" id="page12">
+  <ion-content padding="true" style="background: url(img/EMgagYJGQEqKrGDGvrvy_login.jpg) no-repeat center;background-size:cover;" class="manual-ios-statusbar-padding" scroll="false">
+    <form id="signup-form8" class="list center-form">
+      <div id="signup-markdown4" ng-if="error" class="show-list-numbers-and-dots error-box">
+        <p style="color:#FFFFFF;">{{error}}</p>
+      </div>
+      <div class="spacer" style="height: 100px;"></div>
+      <ion-list id="signup-list9">
+        <label class="item item-input top-input" id="signup-input17">
+          <span class="input-label">Name</span>
+          <input type="text" placeholder="" ng-model="data.name">
+        </label>
+        <label class="item item-input" id="signup-input19">
+          <span class="input-label">Email</span>
+          <input type="email" placeholder="" ng-model="data.email">
+        </label>
+        <label class="item item-input botoom-input" id="signup-input18">
+          <span class="input-label">Password</span>
+          <input type="password" placeholder="" ng-model="data.password">
+        </label>
+      </ion-list>
+      <div class="spacer" style="height: 40px;"></div>
+      <button id="signup-button14" ng-click="signup()" ng-show="true==false" class="button button-calm button-block">Sign up</button>
+      <button id="signup-button27" ng-click="signupFirebase()" class="button button-calm button-block">Sign up Firebase</button>
+      <a ui-sref="login()" id="signup-button15" class="button button-calm button-block button-clear">Already have an account ?</a>
+    </form>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,60 @@
+<ion-view title="Profil" id="page7">
+  <!--
+  <ion-nav-buttons side="right">
+      <button class="button button-icon icon ion-camera" ng-click="upload()"></button>
+  </ion-nav-buttons>
+  -->
+  <ion-content>
+      
+  </ion-content>
+  <ion-content padding="true" class="has-header">
+    <div class="spacer" style="height: 20px;"></div>
+    <form id="profil-form11" class="list">
+      <div class="profile-image">
+        <img src="" style="display: block; width: 40%; height: auto; margin-left: auto; margin-right: auto;" gravatar-src="userData.email" gravatar-size="200">
+      </div>
+      <div class="spacer" style="height: 20px;"></div>
+      <!--
+	  <div class="row" ng-repeat="image in userData.images" ng-if="$index % 4 === 0">
+          <div class="col col-25" ng-if="$index < userData.images.length">
+              <img ng-src="data:image/jpeg;base64,{{userData.images[$index].image}}" width="100%" ng-model="userData.images[$index].image" />
+          </div>
+          <div class="col col-25" ng-if="$index + 1 < userData.images.length">
+              <img ng-src="data:image/jpeg;base64,{{userData.images[$index + 1].image}}" width="100%" ng-model="userData.images[$index + 1].image" />
+          </div>
+          <div class="col col-25" ng-if="$index + 2 < userData.images.length">
+              <img ng-src="data:image/jpeg;base64,{{userData.images[$index + 2].image}}" width="100%" ng-model="userData.images[$index + 2].image" />
+          </div>
+          <div class="col col-25" ng-if="$index + 3 < userData.images.length">
+              <img ng-src="data:image/jpeg;base64,{{userData.images[$index + 3].image}}" width="100%" ng-model="userData.images[$index + 3].image"/>
+          </div>
+      </div>
+      <div class="bar bar-subheader">
+        <button class="button" ng-click="doGetImage()">Pick Image</button>
+      </div>
+	  <ion-content class="padding" style="top:90px">
+        <ion-list>
+          <ion-item ng-repeat="item in assetCollection track by $index">
+            <p> {{$index}} - {{item.name}}</p>
+            <p>{{item.lastUpdated | date: 'medium'}}</p>
+            <img ng-src={{item.URL}} width="180px" class="padding"/>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+      -->
+      <label class="item item-input" id="profil-input28">
+        <span class="input-label">Nom</span>
+        <input type="text" placeholder="{{userData.name}}" ng-model="userData.name">
+      </label>
+      <label class="item item-input" id="profil-input29">
+        <span class="input-label">Prénom</span>
+        <input type="text" placeholder="{{userData.firstname}}" ng-model="userData.firstname">
+      </label>
+      <label class="item item-input" id="profil-input30">
+        <span class="input-label">Age</span>
+        <input type="number" placeholder="{{userData.year}}" ng-model="userData.year">
+      </label>
+      <button id="profil-button31" ng-click="updateItem()" class="button button-positive button-block button-outline icon-left ion-ios-checkmark-outline">Enregistrer</button>
+    </form>
+  </ion-content>
+</ion-view>

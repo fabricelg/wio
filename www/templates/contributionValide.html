@@ -1,0 +1,53 @@
+<ion-view title="Contribution valide" id="page10">
+  <ion-content padding="true" class="has-header">
+    <button id="contribution-novalid" ng-click="toggleValided()" ng-show="item.valided" class="button button-assertive button-block button-outline icon-left icon ion-sad-outline">Je ne valide pas !</button>
+    
+    <div class="list card">
+
+      <div class="item item-avatar">
+        <img src="{{item.photo}}">
+        <h2>{{item.name}}</h2>
+        <p>{{item.formatted_phone_number}}</p>
+        <p>{{item.siteweb}}</p>
+      </div>
+
+      <div class="item item-body">
+        <p>{{item.formatted_address}}</p>
+        <div id="map_canvas">
+            <ui-gmap-google-map 
+              center="map.center"
+              bounds="map.bounds"
+              dragging="false"
+              options="map.options"
+              pan="true"
+              zoom="map.zoom"
+              style="height:200px;">
+              
+              <ui-gmap-marker 
+                coords="marker.coords" 
+                options="marker.options" 
+                idkey="marker.id">
+              </ui-gmap-marker>
+              
+            </ui-gmap-google-map>
+        </div>
+        <p>
+          On peut rajouter un descriptif ...
+        </p>
+        <div class="item">
+          <h2>Horaires :</h2>
+          <div ng-repeat="weekday_text in item.opening_hours.weekday_text">
+            <p>{{weekday_text}}</p>
+          </div>
+        </div>
+        <p>
+          <a href="#" class="subdued">1 Like</a>
+          <a href="#" class="subdued">5 Comments</a>
+        </p>
+      </div>
+    </div>
+    
+    <button id="contribution-novalid" ng-click="toggleValided()" ng-show="item.valided" class="button button-assertive button-block button-outline icon-left ion-sad-outline">Je ne valide pas !</button>
+    
+  </ion-content>
+</ion-view>

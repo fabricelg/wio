@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title>Wio</title>
+
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+  <link href="css/nouislider.min.css" rel="stylesheet">
+  <link href="css/ionic.app.css" rel="stylesheet">
+
+  <style>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+      display: none !important;
+    }
+  </style>
+  <style type="text/css">
+    .platform-ios .manual-ios-statusbar-padding {
+      padding-top: 20px;
+    }
+
+    .manual-remove-top-padding {
+      padding-top: 0px;
+    }
+
+    .manual-remove-top-padding .scroll {
+      padding-top: 0px !important;
+    }
+
+    ion-list.manual-list-fullwidth div.list,
+    .list.card.manual-card-fullwidth {
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+
+    ion-list.manual-list-fullwidth div.list>.item,
+    .list.card.manual-card-fullwidth>.item {
+      border-radius: 0px;
+      border-left: 0px;
+      border-right: 0px;
+    }
+
+    .show-list-numbers-and-dots ul {
+      list-style-type: disc;
+      padding-left: 40px;
+    }
+
+    .show-list-numbers-and-dots ol {
+      list-style-type: decimal;
+      padding-left: 40px;
+    }
+  </style>
+
+
+
+  <!-- dependency js -->
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/lodash/4.15.0/lodash.min.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
+  <script src="lib/angular-simple-logger.js"></script>
+  <script src="lib/firebase.init.js"></script>
+  <script src="lib/angular-google-maps.min.js"></script>
+  <!--<script src="lib/googlemaps.init.js"></script>-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7MruqhvAfofoA6ozwOMaBPRM4uyVQIQg&amp;signed_in=false&amp;libraries=places&region=FR" async defer></script>
+  <script src="lib/ionic.cloud.min.js"></script>
+  <script src="lib/ionic.cloud.init.js"></script>
+  <script src="lib/gravatar.js"></script>
+  <script src="lib/ionic.native.min.js"></script>
+  <script src="lib/angular-messages.js"></script>
+  <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
+  <script src="lib/nouislider.min.js"></script>
+
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="lib/ng-cordova.js"></script>
+  <script src="cordova.js"></script>
+
+  <!-- your app's js -->
+  <script src="js/app.js"></script>
+  <!--
+  <script src="js/controllers/menuCtrl.js"></script>
+  <script src="js/controllers/carteCtrl.js"></script>
+  <script src="js/controllers/chatCtrl.js"></script>
+  <script src="js/controllers/contributionCtrl.js"></script>
+  <script src="js/controllers/contributionsCtrl.js"></script>
+  <script src="js/controllers/contributionsValidesCtrl.js"></script>
+  <script src="js/controllers/contributionValide.js"></script>
+  <script src="js/controllers/loginCtrl.js"></script>
+  <script src="js/controllers/paramTresCtrl.js"></script>
+  <script src="js/controllers/profilCtrl.js"></script>
+  <script src="js/controllers/resetCtrl.js"></script>
+  <script src="js/controllers/signupCtrl.js"></script>
+  <script src="js/controllers/mapsExampleCtrl.js"></script>
+  -->
+  <script src="js/controllers.js"></script>
+  <script src="js/routes.js"></script>
+  <script src="js/directives.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/users.js"></script>
+  <script src="js/contributions.js"></script>
+  <script src="js/categories.js"></script>
+  <script src="js/images.js"></script>
+
+</head>
+
+<body ng-app="app" animation="slide-left-right-ios7">
+  <div>
+    <ion-side-menus enable-menu-with-back-views="false" data-componentid="side-menu21">
+      <ion-side-menu-content>
+        <ion-nav-bar class="bar-stable">
+          <ion-nav-back-button></ion-nav-back-button>
+          <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+          </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view></ion-nav-view>
+      </ion-side-menu-content>
+      <ion-side-menu side="left" id="side-menu21">
+        <ion-content ng-controller="menuCtrl" padding="true" style="top:0px !important;" class="side-menu-left side-menu-gradient">
+          <div class="spacer" data-componentid="spacer11" style="width: 248px; height: 30px;"></div>
+          <div class="profile-image" data-componentid="image2">
+            <img src="img/nope" style="display: block; width: 40%; height: auto; margin-left: auto; margin-right: auto;" gravatar-src="userData.email" gravatar-size="200">
+          </div>
+          <h3 id="menu-heading1" style="color:#000000;font-weight:300;text-align:center;" data-componentid="heading1">{{userData.name}} {{userData.firstname}}</h3>
+          <h5 id="menu-heading2" ng-show="userData.year != null" style="color:#000000;font-weight:lighter;text-align:center;" data-componentid="heading2">{{userData.year}} ans</h5>
+          <ion-list id="menu-list1" class="manual-list-fullwidth" data-componentid="list1">
+            <ion-item class="item-icon-left side-menu-item" id="menu-list-item4" ui-sref="tabsController.carte_tab1()" menu-close="" data-componentid="list-item4">
+              <i class="icon ion-map"></i>Carte</ion-item>
+            <ion-item class="item-icon-left side-menu-item" id="menu-list-item6" ui-sref="profil()" menu-close="" data-componentid="list-item6">
+              <i class="icon ion-ios-person-outline"></i>Profil</ion-item>
+            <!--
+            <ion-item class="item-icon-left side-menu-item" id="menu-list-item7" ui-sref="paramTres()" menu-close="" data-componentid="list-item7">
+              <i class="icon ion-ios-settings"></i>Paramètres</ion-item>
+            
+            <ion-item class="item-icon-left side-menu-item" id="menu-list-item10" ui-sref="mapsExample()" menu-close="" data-componentid="list-item10">
+              <i class="icon ion-android-attach"></i>Exemple</ion-item>
+  
+            <ion-item class="item-icon-left side-menu-item" id="menu-list-item5" ui-sref="chat()" menu-close="" data-componentid="list-item5">
+              <i class="icon ion-ios-chatbubble-outline"></i>Chat</ion-item>
+	           -->
+          </ion-list>
+          <div class="spacer" data-componentid="spacer3" style="height: 10px;"></div>
+          <button id="menu-button1" ng-click="logout()" ng-show="true==false" class="button button-assertive button-block" data-componentid="button1">Logout</button>
+          <button id="menu-button30" ng-click="logoutFirebase()" class="button button-assertive button-block" data-componentid="button30">Logout Firebase</button>
+        </ion-content>
+      </ion-side-menu>
+    </ion-side-menus>
+  </div>
+  <script id="error-list.html" type="text/ng-template">
+    <div class="error" ng-message="required">
+      <i class="ion-information-circled"></i> Ce champ est obligatoire!
+    </div>
+    <div class="error" ng-message="minlength">
+      <i class="ion-information-circled"></i> Minimum length of this field is 5 characters!
+    </div>
+    <div class="error" ng-message="minlength_contribution_name">
+      <i class="ion-information-circled"></i> La longueur minimum de ce champ est de 2 caractères!
+    </div>
+    <div class="error" ng-message="maxlength">
+      <i class="ion-information-circled"></i> Maximum length of this field is 20 characters!
+    </div>
+  </script>
+</body>
+
+</html>

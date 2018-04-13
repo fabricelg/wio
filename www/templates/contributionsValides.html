@@ -1,0 +1,22 @@
+<ion-view title="Contributions Validés" id="page3">
+  <ion-nav-buttons side="right" scroll="false" class="has-header item-input-inset">
+    <div class='item-input-inset'>
+      <label class='item-input-wrapper'>
+        <i class='icon ion-search placeholder-icon'></i>
+        <input type='search' ng-model='input.searchInput' placeholder='Search'>
+      </label>
+    </div>
+    <button class='button button-icon icon ion-ios-close-outline' ng-click='clearAdresseInput()' id="buttonClearAdresseInput" style="display:none"></button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class=" manual-remove-top-padding has-header">
+    <ion-refresher pulling-text="Pull To Refresh" on-refresh="refreshTasks()" refreshing-text="Fetching ..." refreshing-icon="ion-loading-b"></ion-refresher>
+	  <ion-list id="contributionsValides-list11" class="manual-list-fullwidth">
+      <ion-item class="item-icon-left" id="contributionsValides-list-item9" ng-click="setContribution(item)" ng-repeat="item in items | filter:input.searchInput" ng-if="item.valided">
+        <i class="icon ion-ios-checkmark-outline"></i>{{item.name}}
+        <div>
+          <span style="font-size: 10px">{{item.formatted_address}}</span>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

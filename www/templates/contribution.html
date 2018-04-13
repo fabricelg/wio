@@ -1,0 +1,96 @@
+<ion-view title="Contribution" id="page10">
+  <ion-content padding="true" class="has-header">
+    <div id="contribution-button-bar" ng-show="item.valided==false" class="button-bar">
+      <a id="contribution-button24" ng-click="updateItem(contributionForm)" class="button button-positive button-block button-outline icon ion-ios-checkmark-outline"></a>
+      <button id="contribution-button25" ng-click="toggleValided(contributionForm)" class="button button-balanced button-block button-outline icon ion-happy-outline"></button>
+      <button id="contribution-button26" ng-click="deleteItem()" class="button button-assertive button-block button-outline icon ion-ios-trash-outline"></button>
+    </div>
+    <button id="contribution-novalid" ng-click="toggleValided(contributionForm)" ng-show="item.valided==true" class="button button-assertive button-block button-outline icon-left icon ion-sad-outline">Je ne valide pas !</button>
+    <form id="contribution-form10" name="contributionForm" class="list">
+      <label class="item item-input" id="contribution-input21" ng-class="{ 'has-errors' : contributionForm.name.$invalid, 'no-errors' : contributionForm.name.$valid}">
+        <span class="input-label">Nom</span>
+        <input type="text" name="name" placeholder="{{item.name}}" ng-model="item.name" required ng-minlength="2">
+      </label>
+      <div class="error-container last-error-container" ng-show="contributionForm.name.$error" ng-messages="contributionForm.name.$error">
+        <!--<div ng-messages-include="error-list.html"></div> -->
+        <div ng-message="required">Le nom est obligatoire !</div>
+        <div ng-message="minlength">La longueur minimum du nom est de 2 caractères !</div>
+      </div>
+      <label class="item item-input" id="contribution-input22">
+        <span class="input-label">Téléphone</span>
+        <input type="text" placeholder="{{item.formatted_phone_number}}" ng-model="item.formatted_phone_number">
+      </label>
+      <label class="item item-input" id="contribution-input24">
+        <span class="input-label">Site web</span>
+        <input type="text" placeholder="{{item.siteweb}}" ng-model="item.siteweb">
+      </label>
+      <label class="item item-input has-errors" id="contribution-input25" ng-class="{ 'has-errors' : !isGooglePlaceSelected, 'no-errors' : isGooglePlaceSelected}">
+        <span class="input-label">Adresse :</span>
+        <div id="div-contribution-adresse-input" style="width: 100%;"></div>
+      </label>
+      <div class="error-container last-error-container" ng-show="!isGooglePlaceSelected">
+        <div>Saisissez et sélectionnez une adresse dans la liste!</div>
+      </div>
+
+      <div id="map_canvas">
+        <ui-gmap-google-map 
+          center="map.center"
+          bounds="map.bounds"
+          control="map.control"
+          events="map.events"
+          options="map.options"
+          pan="true"
+          zoom="map.zoom"
+          style="height:150px;">
+          
+          <ui-gmap-marker
+            coords="map.position.coords"
+            idKey="'map.position.id'"
+            icon="map.position.icon"
+            options="map.position.options">
+          </ui-gmap-marker>
+          
+          <ui-gmap-marker 
+            coords="marker.coords" 
+            options="marker.options" 
+            events="marker.events" 
+            idkey="marker.id">
+          </ui-gmap-marker>
+          
+          <ui-gmap-search-box 
+            ng-model="item.formatted_address"
+            template="map.searchbox.template" 
+            parentdiv="map.searchbox.parentdiv" 
+            events="map.searchbox.events"
+            options="map.searchbox.options" >
+          </ui-gmap-search-box>
+
+        </ui-gmap-google-map>
+      </div>
+      <button id="button-geolocate" ng-click="centerOnMe(true)" class="button button-stable button-fab-bottom-left ion-navigate" style="position: relative;bottom: 40px;left: -10px;"></button>
+      
+      <div ng-repeat="itemDay in item.opening_hours.periods">
+        <ion-toggle toggle-class="toggle-balanced" id="contribution-toggle1" ng-model="itemDay.checked">Ouvert le {{itemDay.name}} ?</ion-toggle>
+        <!--
+        <ion-item class="range range-positive" id="contribution-range1" ng-show="itemDay.checked==true">De {{itemDay.open.time | limitTo:2}}:{{itemDay.open.time | limitTo:-2}}
+          <input type="range" min="0" max="14.4" step="0.3" ng-model="itemDay.timeValue.open" ng-change="setTime(itemDay.timeValue.open, itemDay.day, 'open')">
+        </ion-item>
+        <ion-item class="range range-positive" id="contribution-range2" ng-show="itemDay.checked==true">A {{itemDay.close.time | limitTo:2}}:{{itemDay.close.time | limitTo:-2}}
+          <input type="range" min="0" max="14.4" step="0.3" ng-model="itemDay.timeValue.close" ng-change="setTime(itemDay.timeValue.close, itemDay.day, 'close')">
+        </ion-item>
+        -->
+        <ion-item style="padding-bottom: 45px;padding-top: 45px;padding-left: 30px;padding-right: 30px;" ng-show="itemDay.checked==true">
+          <div id="slider_{{itemDay.day}}" ng-show="itemDay.checked==true" class="sliders_time"></div>
+        </ion-item>
+      </div>
+      
+    </form>
+
+    <a id="contribution-add" ng-click="addItem(contributionForm)" ng-show="item.valided!=false &amp;&amp; item.valided!=true" class="button button-positive button-block button-outline icon-left ion-ios-checkmark-outline">Ajouter</a>
+    <a id="contribution-maj" ng-click="updateItem(contributionForm)" ng-show="item.valided==false" class="button button-positive button-block button-outline icon-left ion-ios-checkmark-outline">Mettre à jour</a>
+    <button id="contribution-valide" ng-click="toggleValided(contributionForm)" ng-show="item.valided==false" class="button button-balanced button-block button-outline icon-left ion-happy-outline">Je valide !</button>
+    <button id="contribution-novalid" ng-click="toggleValided(contributionForm)" ng-show="item.valided==true" class="button button-assertive button-block button-outline icon-left ion-sad-outline">Je ne valide pas !</button>
+    <button id="contribution-delete" ng-click="deleteItem()" ng-show="item.valided==false" class="button button-assertive button-block button-outline icon-left ion-ios-trash-outline">Supprimer</button>
+
+  </ion-content>
+</ion-view>

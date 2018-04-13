@@ -1,0 +1,75 @@
+<ion-view title="" id="page2">
+  <ion-nav-buttons side="right" scroll="false" class="has-header item-input-inset" style="width: 100%;padding-left: 30px;">
+    <div class='item-input-inset' style="width: 100%;">
+      <label class='item-input-wrapper'>
+      <i class='icon ion-search placeholder-icon'></i>
+      <div id='div-adresse-input' style="width: 100%;"></div>
+      </label>
+    </div>
+    <button class="button button-icon icon ion-ios-list-outline" ng-click="showModal()" id="buttonShowModal"></button>
+    <button class='button button-icon icon ion-ios-close-outline' ng-click='clearAdresseInput()' id="buttonClearAdresseInput" style="display:none"></button>
+  </ion-nav-buttons>
+  <ion-content padding="false" scroll="false" class="has-header">
+    <div id="map_canvas">
+
+      <ui-gmap-google-map  
+        center="map.center"
+        bounds="map.bounds"
+        control="map.control"
+        events="map.events"
+        options="map.options"
+        pan="true"
+        zoom="map.zoom">
+      
+        <ui-gmap-marker
+          coords="map.position.coords"
+          idKey="'map.position.id'"
+          icon="map.position.icon"
+          options="map.position.options"
+          dorebuildall="true">
+        </ui-gmap-marker>
+
+        <ui-gmap-markers
+          click="map.markers.markerClick"
+          models="map.markers.placesOpen.markers"
+          options="map.markers.placesOpen.options"
+          coords="'self'"
+          dorebuildall="true">
+        </ui-gmap-markers>      
+
+        <ui-gmap-markers
+          click="map.markers.markerClick"
+          models="map.markers.placesClose.markers"
+          options="map.markers.placesClose.options"
+          coords="'self'"
+          dorebuildall="true">
+        </ui-gmap-markers>      
+
+        <ui-gmap-markers
+          click="map.markers.markerClick"
+          models="map.markers.placesOther.markers"
+          options="map.markers.placesOther.options"
+          coords="'self'">
+        </ui-gmap-markers>      
+
+        <ui-gmap-window 
+          show="map.infowindow.show" 
+          coords="map.infowindow.model" 
+          templateUrl="map.infowindow.template" 
+          templateParameter="map.infowindow.model" 
+          options="map.infowindow.options"
+          closeClick="map.infowindow.closeClick">
+        </ui-gmap-window>
+
+        <ui-gmap-search-box 
+          ng-model="input.adresseInput"
+          template="map.searchbox.template" 
+          parentdiv="map.searchbox.parentdiv" 
+          events="map.searchbox.events" 
+          options="map.searchbox.options">
+        </ui-gmap-search-box>
+      </ui-gmap-google-map>
+	</div>
+	<button id="button-geolocate" ng-click="centerOnMe()" class="button button-stable button-fab-bottom-left ion-navigate"></button>
+  </ion-content>
+</ion-view>

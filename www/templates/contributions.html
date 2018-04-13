@@ -1,0 +1,24 @@
+<ion-view title="Contributions" id="page4" cache-view="false">
+  <ion-nav-buttons side="right" scroll="false" class="has-header item-input-inset">
+    <div class='item-input-inset'>
+      <label class='item-input-wrapper'>
+        <i class='icon ion-search placeholder-icon'></i>
+        <input type='search' ng-model='input.searchInput' placeholder='Search'>
+      </label>
+    </div>
+    <button class='button button-icon icon ion-ios-close-outline' ng-click='clearAdresseInput()' id="buttonClearAdresseInput" style="display:none"></button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class=" manual-remove-top-padding has-header">
+    <ion-refresher pulling-text="Pull To Refresh" on-refresh="refreshTasks()" refreshing-text="Fetching ..." refreshing-icon="ion-loading-b"></ion-refresher>
+    <ion-list id="contributions-list10" class="manual-list-fullwidth">
+      <ion-item class="item-icon-left" id="contributions-list-item11" ng-click="setContribution(item)" ng-repeat="item in items | filter:input.searchInput" ng-if="!item.valided">
+        <i class="icon ion-compass"></i>{{item.name}} 
+        <div>
+          <span style="font-size: 10px">{{item.formatted_address}}</span>
+        </div>
+        <ion-option-button class="button-assertive" ng-click="deleteItem(item)">Supprimer</ion-option-button>
+      </ion-item>
+    </ion-list>
+    <a ui-sref="tabsController.contribution()" id="contributions-button16" ng-click="addContribution()" class="button button-positive button-block button-outline">Ajouter contribution</a>
+  </ion-content>
+</ion-view>
